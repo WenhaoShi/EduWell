@@ -1,0 +1,372 @@
+<head>
+
+    <!-- If IE use the latest rendering engine -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Set the page to the width of the device and set the zoon level -->
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <title>EduWell</title>
+
+    <!-- LOAD FONTS -->
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+          integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+          crossorigin=""/>
+    <link rel="stylesheet" href="stylesheets/MarkerCluster.css" />
+    <link rel="stylesheet" href="stylesheets/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" type="text/css" href="sliderengine/amazingslider-1.css">
+
+    <!-- script -->
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="sliderengine/jquery.js"></script>
+    <script src="sliderengine/amazingslider.js"></script>
+    <script src="sliderengine/initslider-1.js"></script>
+
+    <!-- Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+            integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+            crossorigin=""></script>
+    <script src="http://matchingnotes.com/javascripts/leaflet-google.js"></script>
+    <script src="scripts/leaflet.markercluster-src.js"></script>
+    <script src="scripts/spin/dist/spin.js"></script>
+    <script src="scripts/leaflet.spin.min.js"></script>
+    <script src="scripts/leaflet.spin.min.js"></script>
+
+    <!-- Bootstrap from https://getbootstrap.com/ -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+    <!-- Easy Auto-complete from http://easyautocomplete.com/ -->
+    <!-- JS file -->
+    <script src="scripts/jquery.easy-autocomplete.min.js"></script>
+
+    <!-- CSS file -->
+    <link rel="stylesheet" href="stylesheets/easy-autocomplete.css">
+
+    <!-- Additional CSS Themes file - not required-->
+    <link rel="stylesheet" href="stylesheets/easy-autocomplete.themes.css">
+
+    <style>
+        @font-face {
+            font-family: 'josefinsans';
+            src: url('icons/Josefin Sans and Playfair Display/josefinsans/JosefinSans-Regular.ttf');
+        }
+
+        html{
+            background-color: #f5fdf7;
+        }
+        h1{
+            font-family: "Oswald", "Helvetica", "Arial", sans-serif;
+        }
+        body{
+            padding: 0 0 0 0;
+            margin: 0 0 0 0;
+            background-color: #f5fdf7;
+            position: absolute;
+            padding-bottom: 60px;
+        }
+        p{
+            line-height: 2;
+            font-size: 14pt;
+        }
+        #main-search-section{
+            align-items: center;
+            padding-left: 20%;
+            padding-right: 20%;
+            padding-top: 20px;
+            /*height: 80VH;*/
+            width: 99VW!important;
+
+        }
+        #searchblock{
+            overflow: auto;
+        }
+        #mainsearch{
+            height:60px;
+            font-size: 18px !important;
+            width:100%;
+            display: inline-block;
+        }
+        .easyautocomplete{
+            font-size: 16px !important;
+            width: 80% !important;
+            display: inline-block;
+        }
+        #searchbutton{
+            width: 20%;
+            height:50px;
+
+        }
+        .mainoption{
+            display: inline-block;
+        }
+        #schoolTypes{
+            margin-top: 10px;
+            align-items: center;
+            left: 50%;
+            right: 50%;
+        }
+        #optionsPanel{
+            text-align: center;
+            /*padding-left: 10%;*/
+            /*padding-right: 10%;*/
+        }
+        #mainsearchbutton{
+            width: 200px!important;
+            margin-top: 10px;
+        }
+        #searcherror{
+            color: red;
+        }
+        #content{
+            margin: 0 0 0 0;
+            display: block;
+            position: relative;
+        }
+        #all{
+            background-color:#f5fdf7;
+            background-image: url(http://35.189.25.144/EduWell/icons/250351505_b25cb20983_o.jpg);
+            background-size: cover;
+        }
+        #about{
+            /*height: 100%;*/
+            background-color: #f5fdf7;
+            font-size: 12pt;
+        }
+        #title{
+            color: #f1f4eb;
+            background-color: rgba(26, 30, 31, 0.52);
+            fill-opacity: .5;
+            border-radius: 10px;
+            padding: 10px;
+            /* -webkit-text-fill-color: aliceblue; */
+            text-align: center;
+        }
+        #about{
+            padding-right: 10%;
+            padding-left: 10%;
+        }
+        #about_head{
+            text-align: center;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 24pt;
+        }
+        #splash{
+            max-width: -webkit-fill-available;
+        }
+        #splashbox{
+            height:auto;
+            position: relative;
+        }
+        #about_content{
+            background-color: white;
+            margin-top: 20px;
+            padding: 30 30 30 30;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            margin-left: 10%;
+            margin-right: 10%;
+            width: 80VW;
+        }
+        .footer{
+            position: absolute;
+            bottom: 0;
+            height:auto;
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+<section id="all">
+    <section class="header">
+        <div id="logo">
+            <button id="homelogo" onclick="location.href='index.html'"></button>
+        </div>
+        <div style="display: inline-block;float: right; font-family: Roboto, Helvetica, Arial, sans-serif;">
+            <div id="main-navigation" class="collapse navbar-collapse"><ul id="menu-homepage" class="nav navbar-nav navbar-right"><li id="menu-item-223" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-223"><a class="menu_link" title="Home" href="index.html">Home</a></li>
+                <li id="menu-item-221" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-221"><a class="menu_link" title="Explore" href="index.html#about">About</a></li>
+                <li id="menu-item-40" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40"><a class="menu_link" title="Data Sources" href="data_sources.html">Data Sources</a></li>
+
+            </ul></div>			<button type="button" class="navbar-toggle glyphicon glyphicon-menu-hamburger" data-toggle="collapse" data-target="#main-navigation"></button>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="sr-only">Toggle Navigation</span>
+        </div>
+
+    </section>
+<section>
+    <section id="content" class="container">
+        <div class="row" id="main-search-section">
+            <div id="title">
+                <div class="splashbox">
+                    <img src='http://35.189.25.144/EduWell/icons/Logo_M.png' id="splash">
+                </div>
+                <h1>Find and Compare Primary Schools, Find Your Child's Future</h1>
+            </div>
+
+            <div class="jumbotron">
+                <h4>Enter an address, suburb or postcode to explore and compare schools in the area</h4>
+                <span id="searcherror"></span>
+                <input type="text" class="" id="mainsearch">
+
+                <div class="container" id="optionsPanel">
+                    <div class="row" id="schoolTypes">
+                        <h4>School Type</h4>
+                        <div class="col-lg-4 col-m-4 col-sm-4 col-xs-4">
+                            <input class="mainoption" id="GovernmentCheck" type="checkbox" checked> <img src="http://35.189.25.144/EduWell/icons/icons8-Govt2.png" height="30">Public
+                        </div>
+                        <div class="col-lg-4 col-m-4 col-sm-4 col-xs-4">
+                            <input class="mainoption" id="CatholicCheck" type="checkbox" checked> <img src="http://35.189.25.144/EduWell/icons/icons8-Catholic.png" height="30">Catholic
+                        </div>
+                        <div class="col-lg-4 col-m-4 col-sm-4 col-xs-4">
+                            <input class="mainoption" id="PrivateCheck" type="checkbox" checked> <img src="http://35.189.25.144/EduWell/icons/icons8-Private.png" height="30">Private/ Independent
+                        </div>
+                    </div>
+                    <div class="row" id="schoolTypes col-lg-4 col-m-4 col-sm-4 col-xs-4">
+                        <button class="eduwellButton btn" id="mainsearchbutton">Search</button>
+                    </div>
+                    <div class="row" id="schoolTypes">
+
+                        <button id="advanced_options" data-toggle="collapse" data-target="#demo">Map Preferences</button>
+
+                        <div id="demo" class="collapse">
+                            <div class="col-lg-4 col-m-4 col-sm-4 col-xs-4">
+                                <h5>Nearby Schools Radius</h4>
+                                    <input id="searchRadius" type="number" id="replyNumber" min="0" max="15" data-bind="value:replyNumber" value="3" />
+                                    km
+                                    <!--<br><br>-->
+                                    <!--<input id = "servicesCheck" type = "checkbox" checked> Nearby Community Services-->
+                            </div>
+                            <div class="col-lg-4 col-m-4 col-sm-4 col-xs-4">
+                                <h5>Special Programs Available</h4>
+                                    <input class="mainoption" id="LGBTCheck" type="checkbox" checked> <img src="http://35.189.25.144/EduWell/icons/icons8-LGBT Flag-48.png" height="30">Safe Schools (LGBT Support)
+                                    <br>
+                                    <input class="mainoption" id="ASPECheck" type="checkbox" checked> <img src="http://35.189.25.144/EduWell/icons/icons8-Exercise-48.png" height="30">After School Physical Education
+                                    <br>
+                                    <input class="mainoption" id="noneCheck" type="checkbox" checked> None Available
+
+                                    <!--<select id="programs" class="form-control" type="select" data-toggle="dropdown">-->
+                                    <!--<option>None</option>-->
+                                    <!--<option>Safe Schools (LGBT Support)</option>-->
+                                    <!--<option>After School Physical Education</option>-->
+                                    <!--</select>-->
+                            </div>
+                            <div class="col-lg-4 col-m-4 col-sm-4 col-xs-4">
+                                <h5>Statistical data</h5>
+                                <select id="stats" class="form-control" type="select" data-toggle="dropdown">
+                                    <option>None</option>
+                                    <option>Bullying Rate</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+</section>
+    <!--<section id="about">-->
+
+        <div id="about_content" class="col-lg-12 col-m-12 col-sm-12 col-xs-12">
+            <h1 style="text-align: center; font-family: josefinsans)">Yourschool believes parents know what is best for their children...</h1>
+
+                   <!-- Insert to your webpage where you want to display the slider -->
+    <div id="amazingslider-wrapper-1" style="display:block;position:relative;max-width:900px;margin:0px auto 56px;">
+        <div id="amazingslider-1" style="display:block;position:relative;margin:0 auto;">
+            <ul class="amazingslider-slides" style="display:none;">
+                <li><img src="http://35.189.25.144/EduWell/icons/page1.jpeg" alt="Find a school, find your child&apos;s future."  title="Find a school, find your child&apos;s future." />
+                </li>
+                <li><img src="http://35.189.25.144/EduWell/icons/page2.jpg" alt="YourSchool cares your child from an overall wellbeing."  title="YourSchool cares your child from an overall wellbeing." />
+                </li>
+                <li><img src="http://35.189.25.144/EduWell/icons/page3.jpg" alt="Come and explore the right school for your child."  title="Come and explore the right school for your child." />
+                </li>
+            </ul>
+            <ul class="amazingslider-thumbnails" style="display:none;">
+                <li><img src="http://35.189.25.144/EduWell/icons/page1-tn.jpeg" alt="Find a school, find your child&apos;s future." title="Find a school, find your child&apos;s future." /></li>
+                <li><img src="http://35.189.25.144/EduWell/icons/page2-tn.jpg" alt="YourSchool cares your child from an overall wellbeing." title="YourSchool cares your child from an overall wellbeing." /></li>
+                <li><img src="http://35.189.25.144/EduWell/icons/page3-tn.jpg" alt="Come and explore the right school for your child." title="Come and explore the right school for your child." /></li>
+            </ul>
+        <div class="amazingslider-engine"><a href="http://amazingslider.com" title="Responsive jQuery Image Slider">Responsive jQuery Image Slider</a></div>
+        </div>
+    </div>
+    <!-- End of body section HTML codes -->
+
+
+            <p>
+                <br>
+                Children spend the large part of their developmental years going to school.
+                Parents, naturally want their kids to be in an environment that is nurturing and supportive of their wellbeing.<br><br>
+                Why then is it so easy to find information on a schools academic performance but so hard to to learn about the other things that really matter?
+                <!--</div>-->
+                <br><br>
+                Yourschool understands that there are many factors important to a child's wellbeing,
+                and that these factors change depending on the child, their parents and their circumstances. <br><br>
+
+                That is why we have developed a tool to allow parents to explore the schools areas in which to raise their child.<br><br>
+
+                <p style="text-align: center; font-style: italic">Yourschool puts the power in the parents hands to make their own decisions and decide what is important to them.</p>
+                <br><br>
+                <p>
+                Yourschool doesn't rely on hidden ranking systems or biased information.
+                It pulls together high quality data from a variety of sources and uses them to paint a picture about what options are available for your child.
+                </p>
+            </p>
+
+        </div>
+
+
+    <!--</section>-->
+
+</section>
+
+</body>
+<div class="footer smalltext">
+    <div style="padding-left: 20px">
+        <div class="attribution">
+            <a href="https://developers.google.com/places/" target="_blank"><img src="https://vignette1.wikia.nocookie.net/ichc-channel/images/7/70/Powered_by_google.png/revision/latest?cb=20160331203712">
+            </a>
+        </div>
+        <div class="attribution">
+            <a href="https://icons8.com/" target="_blank">
+                <img src="https://maxcdn.icons8.com/Share/icon/color/Logos//icons8_logo1600.png" height="40" style="display: inline-block;">
+                icons from icons8
+            </a>
+        </div>
+        <div class="disclaimer">
+            This website was created for educational purposes. All data contained within has been included in accordance with open licenses. Any violation of copyright has occured without knowlege and will warrant the immediate removal of infringing material on notification.
+
+        </div>
+
+    </div>
+</div>
+
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqwXeBF0eH49temHUaJR49atlSoTgBPzo&libraries=places&callback=initAutocomplete"
+            async defer type="text/javascript"></script>
+    <script type="text/javascript" src="scripts/mainsearch.js"></script>
+
+</body>
+
+
+

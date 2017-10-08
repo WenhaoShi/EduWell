@@ -1,0 +1,276 @@
+<head>
+
+    <!-- If IE use the latest rendering engine -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Set the page to the width of the device and set the zoon level -->
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <title>EduWell</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+          integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+          crossorigin=""/>
+    <link rel="stylesheet" href="stylesheets/MarkerCluster.css" />
+    <link rel="stylesheet" href="stylesheets/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="stylesheets/styles.css">
+
+    <!-- script -->
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+            integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+            crossorigin=""></script>
+    <script src="http://matchingnotes.com/javascripts/leaflet-google.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="scripts/leaflet.markercluster-src.js"></script>
+    <script src="scripts/spin/dist/spin.js"></script>
+    <script src="scripts/leaflet.spin.min.js"></script>
+    <script src="scripts/leaflet.spin.min.js"></script>
+
+    <!-- Bootstrap from https://getbootstrap.com/ -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+    <!-- Easy Auto-complete from http://easyautocomplete.com/ -->
+    <!-- JS file -->
+    <script src="scripts/jquery.easy-autocomplete.min.js"></script>
+
+    <!-- CSS file -->
+    <link rel="stylesheet" href="stylesheets/easy-autocomplete.css">
+
+    <!-- Additional CSS Themes file - not required-->
+    <link rel="stylesheet" href="stylesheets/easy-autocomplete.themes.css">
+
+    <style>
+        h1{
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        }
+        body{
+            padding: 0 0 0 0;
+            margin: 0 0 0 0;
+        }
+        #main-search-section{
+            align-items: center;
+            padding-left: 15%;
+            padding-right: 20%;
+            padding-top: 5%;
+            /*height: 100%;*/
+            width: 99VW!important;
+
+        }
+        #searchblock{
+            overflow: auto;
+        }
+        #mainsearch{
+            height:60px;
+            font-size: 18px !important;
+            width:100%;
+            display: inline-block;
+        }
+        .easyautocomplete{
+            font-size: 16px !important;
+            width: 80% !important;
+            display: inline-block;
+        }
+        #searchbutton{
+            width: 20%;
+            height:50px;
+
+        }
+        .mainoption{
+            display: inline-block;
+        }
+        #schoolTypes{
+            margin-top: 10px;
+            align-items: center;
+            left: 50%;
+            right: 50%;
+        }
+        #optionsPanel{
+            text-align: center;
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+        #mainsearchbutton{
+            width: 200px!important;
+            margin-top: 10px;
+
+        }
+        #searcherror{
+            color: red;
+        }
+        #content{
+            margin: 0 0 0 0;
+        }
+        #all{
+            background-size: cover;
+        }
+        #about{
+            height: 40VH;
+            background-color: #e8e8d7;
+        }
+        #title{
+            color: #f1f4eb;
+            background-color: rgba(128, 128, 128, 0.39);
+            fill-opacity: .5;
+            border-radius: 10px;
+            padding: 10px;
+            /* -webkit-text-fill-color: aliceblue; */
+            text-align: center;
+        }
+        #about{
+            padding-right: 20%;
+            padding-left: 20%;
+            padding-top: 20px;
+        }
+        #about_head{
+            text-align: center;
+            font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+            font-size: 24pt;
+        }
+
+    </style>
+
+
+</head>
+<body>
+
+<section id="all">
+    <section class="header">
+        <div id="logo">
+            <button id="homelogo" onclick="location.href='index.html'"></button>
+        </div>
+        <div style="display: inline-block;float: right; font-family: Roboto, Helvetica, Arial, sans-serif;">
+            <div id="main-navigation" class="collapse navbar-collapse"><ul id="menu-homepage" class="nav navbar-nav navbar-right"><li id="menu-item-223" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-223"><a class="menu_link" title="Home" href="index.html">Home</a></li>
+                <li id="menu-item-221" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-221"><a class="menu_link" title="Explore" href="index.html#about">About</a></li>
+                <li id="menu-item-40" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40"><a class="menu_link" title="Data Sources" href="data_sources.html">Data Sources</a></li>
+
+            </ul></div>			<button type="button" class="navbar-toggle glyphicon glyphicon-menu-hamburger" data-toggle="collapse" data-target="#main-navigation"></button>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="sr-only">Toggle Navigation</span>
+        </div>
+
+        </button>
+
+
+    </section>
+
+
+    <section id="content" class="container">
+        <div class="row" id="main-search-section">
+            <h1>Data Sources</h1>
+            <h3><i>All datasets collected under Creative Commons <img src="https://creativecommons.org/wp-content/uploads/2017/06/cc.large_.open_.graph_.png" height="20"></i></h3>
+            <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Dataset</th>
+                    <th>Source</th>
+                    <th>Date Updated</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td><a href="https://www.data.vic.gov.au/data/dataset/school-locations-2016">School Locations</a></td>
+                    <td>Department of Education and Training</td>
+                    <td>05/04/2016</td>
+                </tr>
+                <tr>
+                    <td><a href='https://www.data.vic.gov.au/data/dataset/vcams-children-who-are-bullied'>VCAMS Children who are bullied</a></td>
+                    <td>Department of Education</td>
+                    <td>26/10/2016</td>
+                </tr>
+                <tr>
+                    <td><a href='http://www.education.vic.gov.au/Documents/about/programs/health/Safe%20Schools%20list%20-%2016%20March%202017.pdf'>Safe Schools Members</a></td>
+                    <td>Department of Education</td>
+                    <td>16/03/2017</td>
+                </tr>
+                <tr>
+                    <td><a href='https://www.data.vic.gov.au/data/dataset/all-schools-fte-enrolments-feb-2016'>All Schools FTE enrolments - Feb 2016</a></td>
+                    <td>Department of Education</td>
+                    <td>14/06/2016</td>
+                </tr>
+                <tr>
+                    <td><a href='https://en.wikipedia.org/wiki/List_of_government_schools_in_Victoria,_Australia'>All Schools Websites</a></td>
+                    <td>Wikipedia</td>
+                    <td>25/08/2017</td>
+                </tr>
+ 
+<tr>
+                    <td><a href='https://www2.health.vic.gov.au/about/publications/data/After%20School%20Physical%20Activity%20Programs'>After School Physical Activity Programs</a></td>
+                    <td>Department of Health and Human Services</td>
+                    <td>21/05/2015</td>
+                </tr>
+<tr>
+                    <td><a href='https://www.data.vic.gov.au/data/dataset/victorian-state-schools-bank-account-balances-dec-2011-2012-and-2013'>Victorian State Schools - Bank Account Balances</a></td>
+                    <td>Department of Education</td>
+                    <td>08/03/2016</td>
+                </tr>
+<tr>
+                    <td><a href='https://www.data.vic.gov.au/data/dataset/victorian-state-schools-building-count-2013'>Victorian State Schools-Building Count</a></td>
+                    <td>Department of Education</td>
+                    <td>08/03/2016</td>
+                </tr>
+                <tr>
+                    <td><a href='https://www.data.vic.gov.au/data/dataset/victorian-state-schools-building-floor-area-2013'>Victorian State Schools-Building Floor Area</a></td>
+                    <td>Department of Education</td>
+                    <td>07/03/2016</td>
+                </tr>
+
+                <tr>
+                    <td><a href='http://resources.news.com.au/files/104/451/class_sizes-895306-1237433712168.pdf'>Class Sizes in Victorian Government Schools (2017 data extrapolated using annual trends - in dataset below) </a></td>
+                    <td>News.com.au</td>
+                    <td>2007</td>
+                </tr>
+                <tr>
+                    <td><a href='www.education.vic.gov.au/Documents/about/department/classsizes.xlsx'>Primary Class Sizes</a></td>
+                    <td>Department of Education</td>
+                    <td>February, 2017</td>
+                </tr>
+                <tr>
+                    <td><a href='www.education.vic.gov.au/Documents/about/department/classsizes.xlsx'>Primary Class Sizes</a></td>
+                    <td>Department of Education</td>
+                    <td>February, 2017</td>
+                </tr>
+                <tr>
+                    <td><a href='https://data.gov.au/dataset/vic-local-government-areas-psma-administrative-boundaries'>LGA boundries</a></td>
+                    <td>Department of the Prime Minister and Cabinet</td>
+                    <td>June, 2017</td>
+                </tr>
+            </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer header">
+        <div style="padding-left: 20px" class="smalltext">
+            <div class="attribution">
+                <a href="https://developers.google.com/places/" target="_blank"><img src="https://vignette1.wikia.nocookie.net/ichc-channel/images/7/70/Powered_by_google.png/revision/latest?cb=20160331203712">
+                </a>
+            </div>
+            <div class="attribution">
+                <a href="https://icons8.com/" target="_blank">
+                    <img src="https://maxcdn.icons8.com/Share/icon/color/Logos//icons8_logo1600.png" height="40" style="display: inline-block;">
+                    icons from icons8
+                </a>
+            </div>
+            <div class="disclaimer">
+                This website was created for educational purposes. All data contained within has been included in accordance with open licenses. Any violation of copyright has occured without knowlege and will warrant the immediate removal of infringing material on notification.
+
+            </div>
+        </div>
+
+    </section>
+</body>
+
+
+

@@ -1,0 +1,262 @@
+<head>
+
+	<!-- If IE use the latest rendering engine -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- Set the page to the width of the device and set the zoon level -->
+	<meta name="viewport" content="width = device-width, initial-scale = 1">
+	<title>EduWell</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+		  integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+		  crossorigin=""/>
+	<link rel="stylesheet" href="stylesheets/MarkerCluster.css" />
+	<link rel="stylesheet" href="stylesheets/MarkerCluster.Default.css" />
+	<link rel="stylesheet" href="stylesheets/styles.css">
+
+	<!-- script -->
+
+	<!-- JQuery -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+	<!-- Leaflet -->
+	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+			integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+			crossorigin=""></script>
+	<script src="http://matchingnotes.com/javascripts/leaflet-google.js"></script>
+	<script src="scripts/leaflet.markercluster-src.js"></script>
+	<script src="scripts/spin/dist/spin.js"></script>
+	<script src="scripts/leaflet.spin.min.js"></script>
+	<script src="scripts/leaflet.spin.min.js"></script>
+
+	<!-- Bootstrap from https://getbootstrap.com/ -->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+	<!-- Easy Auto-complete from http://easyautocomplete.com/ -->
+	<!-- JS file -->
+	<script src="scripts/jquery.easy-autocomplete.min.js"></script>
+
+	<!-- CSS file -->
+	<link rel="stylesheet" href="stylesheets/easy-autocomplete.css">
+
+	<!-- Additional CSS Themes file - not required-->
+	<link rel="stylesheet" href="stylesheets/easy-autocomplete.themes.css">
+
+	<!-- Leaflet Locate -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://domoritz.github.io/leaflet-locatecontrol/dist/L.Control.Locate.min.css" />
+
+	<script src="https://domoritz.github.io/leaflet-locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+    <style>
+        #content{
+            margin: 10px 10px 10px 10px;
+            padding-left: 50px !important;
+            padding-right: 50px !important;
+            width: -webkit-fill-available;
+        }
+    </style>
+
+
+</head>
+<body>
+
+<section id="all">
+	<section class="header">
+		<div id="logo">
+			<button id="homelogo" onclick="location.href='index.html'"></button>
+		</div>
+        <div style="display: inline-block;float: right; font-family: Roboto, Helvetica, Arial, sans-serif;">
+            <div id="main-navigation" class="collapse navbar-collapse"><ul id="menu-homepage" class="nav navbar-nav navbar-right"><li id="menu-item-223" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-223"><a class="menu_link" title="Home" href="index.html">Home</a></li>
+                <li id="menu-item-221" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-221"><a class="menu_link" title="Explore" href="index.html#about">About</a></li>
+                <li id="menu-item-40" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40"><a class="menu_link" title="Data Sources" href="data_sources.html">Data Sources</a></li>
+
+            </ul></div>			<button type="button" class="navbar-toggle glyphicon glyphicon-menu-hamburger" data-toggle="collapse" data-target="#main-navigation"></button>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="sr-only">Toggle Navigation</span>
+        </div>
+
+		</button>
+
+
+	</section>
+
+
+	<section id="content" class="container" style="padding-left: 0px">
+		<div class = "row" style=" margin-top: 0px;">
+			<div id="searchsection" class=" col-lg-4 col-m-4 col-sm-4 col-xs-12 ">
+				<!--<p id="searchinst">Enter a suburb or postcode to find nearby schools</p>-->
+				<p id="searcherror" class="error"></p>
+				<input id="searchbox"></input>
+				<input id="submitSearch"  type="button" value="" onclick="doGeocode()">
+			</div>
+		<div id = "Legend" class="col-lg-5 col-m-5 col-sm-5 col-xs-12 sidebar">
+			<div style="padding-left:0; text-align: center" class="col-lg-7" id="BullyRate">
+				<div class="col-lg-3 col-m-3 col-sm-3 col-xs-3">
+					<b>Bullying Rate:</b>
+				</div>
+				<div class="col-lg-3 col-m-3 col-sm-3 col-xs-3">
+					<div class='Low' style="display:"></div> <br>Low
+				</div>
+				<div class="col-lg-3 col-m-3 col-sm-3 col-xs-3">
+					<div class='Med'></div> <br>Medium
+				</div>
+				<div class="col-lg-3 col-m-3 col-sm-3 col-xs-3">
+					<div class='High'></div> <br>High
+				</div>
+			</div>
+
+			<div id="community_services_legend" style="width:-webkit-fill-available">
+				 <i>Click a school to explore and <b>compare</b></i>
+			</div>
+		</div>
+			<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 rightbutton" style="padding-top: 5px;">
+				<span id="compare_error" class="error"></span>
+				<button class="eduwellButton" id="compare" onclick="compare()">Compare Schools (<span id="numToCompare">0</span>) ></button>
+				<div class="dropdown">
+					<button class="smalldropdown dropdown-toggle" type="button" data-toggle="dropdown" onclick="populateShortlist()"> View Shortlist
+						<span class="caret"></span></button>
+					<ul class="dropdown-menu" id="SchoolListDropdown">
+						<!--<li><a href="#">HTML</a></li>-->
+						<!--<li><a href="#">CSS</a></li>-->
+						<!--<li><a href="#">JavaScript</a></li>-->
+					</ul>
+				</div>
+
+				<button class="smallbutton" onclick="shortlistDelete()">Clear</button>
+			</div>
+		</div>
+		<div class = "row" style="height:80%; margin-top: 0;">
+			<div class=" col-lg-2 col-m-2 col-sm-3 col-xs-12 " id="searchbar">
+				<div class="col-md-12 sidebar" id="filters" style="padding-top: 10px">
+					<div class="mapBox" id="Filtermenu">
+						<div class="mapBox" id="Filtermenu2">
+							<span id="error" class="error"></span>
+							<h2>Filters</h2>
+							<div id="Filters">
+							<h4>School Type</h4>
+								<div class="filterinput"><input id="GovernmentCheck" type="checkbox" checked> <img src="http://35.189.25.144/EduWell/icons/icons8-Govt2.png" height="30">Public <br> </div>
+								<div class="filterinput"><input id="PrivateCheck" type="checkbox" checked> <img src="http://35.189.25.144/EduWell/icons/icons8-Private.png" height="30">Private/ Independent <br> </div>
+								<div class="filterinput"><input id="CatholicCheck" type="checkbox" checked> <img src="http://35.189.25.144/EduWell/icons/icons8-Catholic.png" height="30">Catholic <br></div>
+							</div>
+							<p id="DisplayBadges">
+							<h4>Special program availability</h4>
+							<div class="filterinput"><input class="filtercheckbox" type="checkbox" id="LGBTchecked" checked> <img src="http://35.189.25.144/EduWell/icons/icons8-LGBT Flag-48.png" height="30">Safe Schools (LGBTIA Support) <br></div>
+							<div class="filterinput"><input class="filtercheckbox" type="checkbox" id="ASPEchecked" checked> <img src="http://35.189.25.144/EduWell/icons/icons8-Exercise-48.png" height="30">After School Physical Education (regional only)<br></div>
+							<div class="filterinput"><input class="filtercheckbox" type="checkbox" id="NAchecked" checked> No programs listed <br></div>
+							</p>
+							<!--<p id="Statistics">-->
+							<!--<h2>Other Information</h2>-->
+							<!--<input type="checkbox" id="servicesChecked"> Nearby Community Services <br>-->
+							<!--</p>-->
+							<p id="Statistics">
+							<h2>Statistics</h2>
+							<input type="checkbox" id="bullyingChecked"> Bullying by Local Government Area <br>
+							</p>
+
+						</div>
+
+					</div>
+					<div class="applyDIV"><input type="button" class="eduwellButton" id="filterApply" value="Apply Filter" onclick="filterMap(mymap)"><br>
+						</div>
+				</div>
+			</div>
+
+			<div id='mapwrapper' class="col-lg-7 col-md-6 col-sm-8 col-xs-12" style="padding: 0 0 0 0;">
+					<div class="col-md-12 sidebar" style="padding: 0 0 0 0;" >
+						<div id='mapid'>
+
+						</div>
+					</div>
+			</div>
+
+
+			<div id="sidebar" class="col-lg-3 col-md-3 col-sm-10 col-xs-12">
+				<div class="col-md-12 sidebar noscroll" id="removepad" >
+					<div id="showSchoolBlock">
+						<div id="selectedSchool" class="detailsPane" >
+							<h4><b>Click a school to get more info</b></h4>
+						</div>
+						<div id="buttonPane"></div>
+						<div id="nearby_schools" class="detailsPane">
+							<div id="nearby_schools_to">Nearby Schools to </div> <input id="searchRadius" type="number" id="replyNumber" min="0" max="15" data-bind="value:replyNumber" value="3" />
+							km Search Radius
+
+							<div id="schoolDisplay">
+
+							</div>
+
+						</div>
+						<div id="nearby_services" class="detailsPane">
+							<div id="nearby_services_to">Nearby Services to </div> <input id="searchRadius" type="number" id="replyNumber" min="0" max="15" data-bind="value:replyNumber" value="3" />
+							km Search Radius
+
+							<div id="schoolDisplay">
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	</section>
+	<section class="footer header">
+        <div style="padding-left: 20px" CLASS="smalltext">
+            <div class="attribution">
+                <a href="https://developers.google.com/places/" target="_blank"><img src="https://vignette1.wikia.nocookie.net/ichc-channel/images/7/70/Powered_by_google.png/revision/latest?cb=20160331203712">
+                </a>
+            </div>
+            <div class="attribution">
+                <a href="https://icons8.com/" target="_blank">
+                    <img src="https://maxcdn.icons8.com/Share/icon/color/Logos//icons8_logo1600.png" height="40" style="display: inline-block;">
+                    icons from icons8
+                </a>
+            </div>
+            <div class="disclaimer">
+                This website was created for educational purposes. All data contained within has been included in accordance with open licenses. Any violation of copyright has occured without knowlege and will warrant the immediate removal of infringing material on notification.
+            </div>
+
+        </div>
+
+
+		<div id="map"></div>
+
+		<div id="myModal" class="modal">
+			<div id="modalback"></div>
+			<div></div>
+
+			<span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+			<div class="modal-content" id="pano">
+				<div id="caption"></div>
+	</section>
+
+	<!-- FEATHERLIGHT for lightboxing images -->
+
+	<!--<script async defer-->
+			<!--src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJFCdTyCdRyeBmCQQOOUDBjMjsNluWe28&callback=initialize">-->
+	<!--</script>-->
+	<script type="text/javascript" src="scripts/maptest.js"></script>
+	<script src="scripts/featherlight.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqwXeBF0eH49temHUaJR49atlSoTgBPzo&libraries=places&callback=initAutocomplete"
+			async defer type="text/javascript"></script>
+
+
+
+</body>
+
